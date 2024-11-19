@@ -4,13 +4,6 @@ import React from 'react'; // import react
 const BookingConfirmationModal = ({ bookingDetails, onClose }) => {
   if (!bookingDetails) return null;
 
-  if (bookingDetails)
-      <Profile
-  
-        onBookingSuccessHistory={handleBookingSuccess}
-     
-      />
-
 
   return (
     <div className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center">

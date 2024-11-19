@@ -81,7 +81,6 @@ def create_booking():
         subject = "Booking Confirmation"
         body = f"Dear {data.get('passengerInfo').get('name') },\n\nYour booking has been confirmed for flight {data.get('flightDetails').get('flightNumber')}.\n\nThank you for choosing our service!"
         # send_email_sns(user_email, subject, body)
-        print("before run email function")
         send_email_ses(user_email, subject, body)
         print("emailfunction run")
 
@@ -94,6 +93,13 @@ def get_bookings(user_id):  # Take user_id directly from URL path
     print(Booking)
     bookings = Booking.get_user_bookings(user_id)
     return jsonify(bookings), 200
+
+
+
+# Route to get all bookings for a user
+@app.route('/hello', methods=['GET'])
+def Hello():  # Take user_id directly from URL path
+        return 'Hello Deepak'
 
 if __name__ == '__main__':
     app.run(port=5000)

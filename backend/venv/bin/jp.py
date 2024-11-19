@@ -1,4 +1,4 @@
-#!/Users/deepcloud/Desktop/airline_app/airline-backend/venv/bin/python3.12
+#!/Users/deepcloud/Desktop/gpt_free_airline_app/AirlineWebApp/backend/venv/bin/python3.12
 
 import sys
 import json

@@ -49,12 +49,6 @@ const FlightBookingForm = ({ flight, onBookingSuccess, onClose }) => {
           origin: flight.arrival.airport,
           destination: flight.departure.airport,
         });
-        onBookingSuccessHistory(response.data.booking_id, {
-          flightNumber: flight.flight.number,
-          departureTime: flight.departure.scheduled,
-          origin: flight.arrival.airport,
-          destination: flight.departure.airport,
-        })
         onClose();  // Close the booking form after successful booking
       } else {
         alert('Booking failed, please try again.');

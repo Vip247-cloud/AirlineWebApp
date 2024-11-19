@@ -33,7 +33,7 @@ end
 # Unset irrelevant variables.
 deactivate nondestructive
 
-set -gx VIRTUAL_ENV "/Users/deepcloud/Desktop/airline_app/airline-backend/venv"
+set -gx VIRTUAL_ENV "/Users/deepcloud/Desktop/gpt_free_airline_app/AirlineWebApp/backend/venv"
 
 set -gx _OLD_VIRTUAL_PATH $PATH
 set -gx PATH "$VIRTUAL_ENV/bin" $PATH
