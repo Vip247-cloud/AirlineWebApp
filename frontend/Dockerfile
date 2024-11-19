@@ -13,21 +13,8 @@ RUN npm install
 # Copy the entire React app into the container
 COPY . .
 
-# Build the React app
-RUN npm run build
+# Expose the Vite development server port
+EXPOSE 5173
 
-# Use an nginx image to serve the built app
-FROM nginx:alpine
-
-# Copy the React build files to the nginx default directory
-COPY --from=build /app/dist /usr/share/nginx/html
-
-# Copy a custom nginx configuration if needed
-# COPY nginx.conf /etc/nginx/nginx.conf
-
-# Expose port 80
-EXPOSE 80
-
-
-# Start nginx
-CMD ["nginx", "-g", "daemon off;"]
+# Start the Vite development server
+CMD ["npm", "run", "dev", "--", "--host", "0.0.0.0"]
