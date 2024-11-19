@@ -37,7 +37,7 @@ const FlightBookingForm = ({ flight, onBookingSuccess, onClose }) => {
       };
 
       // Send POST request to the backend with booking data
-      const response = await axios.post('http://localhost:5000/bookings', bookingData);  // Updated URL to match backend
+      const response = await axios.post('http://backend-env.eba-gpkqdy8k.ap-south-1.elasticbeanstalk.com/bookings', bookingData);  // Updated URL to match backend
 
       // console.log(response.data)
 

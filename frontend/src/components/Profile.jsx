@@ -15,7 +15,7 @@ const Profile = ({ onSearch }) => {
 
   const fetchBookingHistory = async (userId) => {
     try {
-      const response = await axios.get(`http://localhost:5000/bookings/${userId}`);
+      const response = await axios.get(`http://backend-env.eba-gpkqdy8k.ap-south-1.elasticbeanstalk.com/bookings/${userId}`);
       setBookingHistory(response.data || []);
     } catch (error) {
       console.error('Could not load booking history:', error);
