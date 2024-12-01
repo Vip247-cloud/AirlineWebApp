@@ -10,7 +10,7 @@ const BookingModal = ({ flight, onClose, onConfirm }) => {
     try {
       setLoading(true);
       // Simulate the booking API call (could be an actual API call to your cloud backend)
-      const response = await axios.post('http://backend-env.eba-gpkqdy8k.ap-south-1.elasticbeanstalk.com/bookings', {
+      const response = await axios.post('http://airline-backend-dev.us-east-1.elasticbeanstalk.com/bookings', {
         flightNumber: flight.flight.number,
         origin: flight.arrival.airport,
         destination: flight.departure.airport,
