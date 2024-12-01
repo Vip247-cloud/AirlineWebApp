@@ -1,18 +1,19 @@
 import boto3
 import uuid
 from datetime import datetime
-from config import AWS_ACCESS_KEY_ID, AWS_SECRET_ACCESS_KEY, AWS_REGION, DB_TABLE_NAME
+from config import AWS_REGION, DB_TABLE_NAME
 
 # Initialize DynamoDB client using the configuration from config.py
 dynamodb = boto3.resource(
     'dynamodb',
-    aws_access_key_id=AWS_ACCESS_KEY_ID,
-    aws_secret_access_key=AWS_SECRET_ACCESS_KEY,
+    # aws_access_key_id=AWS_ACCESS_KEY_ID,
+    # aws_secret_access_key=AWS_SECRET_ACCESS_KEY,
+    # aws_session_token=AWS_SESSION_TOKEN,
     region_name=AWS_REGION
 )
 
 # DynamoDB table reference
-print("Using AWS Access Key ID:", AWS_ACCESS_KEY_ID)  # For debugging, remove in production
+# print("Using AWS Access Key ID:", AWS_ACCESS_KEY_ID)  # For debugging, remove in production
 
 table = dynamodb.Table(DB_TABLE_NAME)
 

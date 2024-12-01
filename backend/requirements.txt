@@ -5,3 +5,4 @@ Werkzeug
 Flask
 boto3
 dynaconf
+reportlab

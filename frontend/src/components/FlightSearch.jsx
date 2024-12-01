@@ -14,10 +14,11 @@ const FlightSearch = ({ onSearch }) => {
           origin: originAirport,
           destination: destinationAirport,
           date: departureDate,
-          access_key: '96ea05bc4e6bf9d1ec5585f2f3b9854b', // Replace with actual API key
+          access_key: '26622c4d7a51b2d3cc018c97d84df553', // Replace with actual API key
         },
       });
 
+      console.log(response)
       // Filter flights based on user input and ensure data fields are valid
       const validFlights = response.data.data.filter((flight) => {
         const validArrival = flight.arrival && flight.arrival.airport;
