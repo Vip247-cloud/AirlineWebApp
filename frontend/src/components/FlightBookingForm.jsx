@@ -36,6 +36,8 @@ const FlightBookingForm = ({ flight, onBookingSuccess, onClose }) => {
         },
       };
 
+      
+
       // Send POST request to the backend with booking data
       const response = await axios.post('http://airline-backend-dev.us-east-1.elasticbeanstalk.com/bookings', bookingData);  // Updated URL to match backend
 

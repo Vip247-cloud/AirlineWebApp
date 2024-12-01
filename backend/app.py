@@ -189,7 +189,7 @@ def create_booking_pdf():
 # Route to get all bookings for a user
 @app.route('/hello', methods=['GET'])
 def Hello():  # Take user_id directly from URL path
-        return 'Hello World01'
+        return 'Hello World02'
 
 if __name__ == '__main__':
     app.run(port=5000)
