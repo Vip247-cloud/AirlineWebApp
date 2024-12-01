@@ -99,7 +99,7 @@ def get_bookings(user_id):  # Take user_id directly from URL path
 # Route to get all bookings for a user
 @app.route('/hello', methods=['GET'])
 def Hello():  # Take user_id directly from URL path
-        return 'Hello Deepak'
+        return 'Hello World'
 
 if __name__ == '__main__':
     app.run(port=5000)
