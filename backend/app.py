@@ -77,52 +77,55 @@ app = Flask(__name__)
 CORS(app)  # Enable CORS for all routes
 
 
-# Initialize SES client
-ses_client = boto3.client('ses', region_name='ap-south-1')  # Use your SES region here
+# # Initialize SES client
+# ses_client = boto3.client('ses', region_name='ap-south-1')  # Use your SES region here
 
-def send_email_ses(recipient_email, subject, body):
-    try:
-        # Send email using SES
-        response = ses_client.send_email(
-            Source='deepcloud.28@gmail.com',  # Replace with your verified SES email address
-            Destination={
-                'ToAddresses': [
-                    recipient_email  # The recipient email address
-                ]
-            },
-            Message={
-                'Subject': {
-                    'Data': subject
-                },
-                'Body': {
-                    'Text': {
-                        'Data': body
-                    }
-                }
-            }
-        )
-        print("Email sent! Message ID:", response['MessageId'])
-    except ClientError as e:
-        print("Error sending email:", e)
+# def send_email_ses(recipient_email, subject, body):
+#     try:
+#         # Send email using SES
+#         response = ses_client.send_email(
+#             Source='deepcloud.28@gmail.com',  # Replace with your verified SES email address
+#             Destination={
+#                 'ToAddresses': [
+#                     recipient_email  # The recipient email address
+#                 ]
+#             },
+#             Message={
+#                 'Subject': {
+#                     'Data': subject
+#                 },
+#                 'Body': {
+#                     'Text': {
+#                         'Data': body
+#                     }
+#                 }
+#             }
+#         )
+#         print("Email sent! Message ID:", response['MessageId'])
+#     except ClientError as e:
+#         print("Error sending email:", e)
+
 
 
 # # Initialize SNS client
-# sns_client = boto3.client('sns', region_name='ap-south-1')  # Replace with your SNS region
+sns_client = boto3.client('sns', region_name='us-east-1')  # Replace with your SNS region
 
-# # SNS topic ARN (replace with your actual SNS topic ARN)
-# SNS_TOPIC_ARN = "arn:aws:sns:ap-south-1:484907490372:airline"
 
-# def send_email_sns(email, subject, body):
-#     try:
-#         # Publish message to SNS topic
-#         response = sns_client.publish(
-#             TopicArn=SNS_TOPIC_ARN,
-#             Message=body,
-#             Subject=subject
-#         )
-#         print("Email sent! Message ID:", response['MessageId'])
-#     except Exception as e:
-#         print("Error sending email:", e)
+# SNS topic ARN (replace with your actual SNS topic ARN)
+SNS_TOPIC_ARN = "arn:aws:sns:us-east-1:020261227574:AirlineBookingeNotifications"
+
+
+def send_email_sns(email, subject, body):
+    try:
+        # Publish message to SNS topic
+        response = sns_client.publish(
+            TopicArn=SNS_TOPIC_ARN,
+            Message=body,
+            Subject=subject
+        )
+        print("Email sent! Message ID:", response['MessageId'])
+    except Exception as e:
+        print("Error sending email:", e)
 
 
 # Route to create a new booking
@@ -146,7 +149,7 @@ def create_booking():
         subject = "Booking Confirmation"
         body = f"Dear {data.get('passengerInfo').get('name') },\n\nYour booking has been confirmed for flight {data.get('flightDetails').get('flightNumber')}.\n\nThank you for choosing our service!"
         # send_email_sns(user_email, subject, body)
-        send_email_ses(user_email, subject, body)
+        send_email_sns(user_email, subject, body)
         print("emailfunction run")
 
     return jsonify(booking_data), 201
@@ -189,7 +192,7 @@ def create_booking_pdf():
 # Route to get all bookings for a user
 @app.route('/hello', methods=['GET'])
 def Hello():  # Take user_id directly from URL path
-        return 'Hello World02'
+        return 'Hello World03'
 
 if __name__ == '__main__':
     app.run(port=5000)
